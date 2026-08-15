@@ -50,20 +50,21 @@ A modern, full-stack **Web Application** and **Expo Mobile App** for tracking, c
 ### Installation
 ```bash
 # Clone the repository
+git clone https://github.com/your-username/llm-benchmark.git
 cd llm-benchmark
 
 # Install web dependencies
-cd web && npm install
+npm --prefix web install
 
 # Install mobile dependencies
-cd ../mobile && npm install
+npm --prefix mobile install
 ```
 
 ---
 
-## 💻 Running the Web Application
+## 💻 Running Locally
 
-To start the Vite development server:
+### 1. Web Application (Vite Dev Server)
 ```bash
 npm run dev
 # Or from web directory:
@@ -71,27 +72,77 @@ cd web && npm run dev
 ```
 Open [http://localhost:5173](http://localhost:5173) in your browser.
 
-To build for production:
+To build and preview production bundle:
 ```bash
 npm run build
+npm run preview
 ```
 
----
-
-## 📱 Running the Expo Mobile App
-
-To launch the Expo development server:
+### 2. Expo Mobile App
 ```bash
 npm run mobile
 # Or from mobile directory:
 cd mobile && npm run start
 ```
 
-### Options:
+#### Launch Options:
 - Press `i` to open in iOS Simulator
 - Press `a` to open in Android Emulator
 - Press `w` to open in Web Browser
 - Scan the QR code with the **Expo Go** app on your physical iOS or Android device.
+
+---
+
+## 🚢 Deployment
+
+For complete, step-by-step production guides, see the [**Deployment Guide (DEPLOYMENT.md)**](./DEPLOYMENT.md).
+
+### 🌐 Web Deployment
+
+#### 1. Vercel (Recommended)
+This repository includes a root [`vercel.json`](./vercel.json) preconfigured for zero-config deployment.
+```bash
+# Deploy with Vercel CLI
+npm i -g vercel
+vercel --prod
+```
+Or import the repository directly into [Vercel Dashboard](https://vercel.com/new).
+
+#### 2. Docker & Docker Compose
+A multi-stage production [`Dockerfile`](./Dockerfile) and [`docker-compose.yml`](./docker-compose.yml) are ready to use:
+```bash
+# Start production container on port 8080
+docker compose up -d --build
+```
+Access the application at `http://localhost:8080`.
+
+#### 3. Netlify & Cloudflare Pages
+- **Base / Root directory**: `web`
+- **Build command**: `npm run build`
+- **Publish / Output directory**: `web/dist`
+
+---
+
+### 📱 Mobile Deployment (Expo EAS)
+
+The project includes preconfigured build profiles in [`mobile/eas.json`](./mobile/eas.json).
+
+```bash
+# 1. Install EAS CLI and log in
+npm install -g eas-cli
+eas login
+
+# 2. Build Android APK (Preview / Testing)
+cd mobile
+eas build --platform android --profile preview
+
+# 3. Build for Production (Play Store .aab / App Store .ipa)
+eas build --platform android --profile production
+eas build --platform ios --profile production
+
+# 4. Export standalone static web bundle
+npx expo export --platform web
+```
 
 ---
 
@@ -101,3 +152,10 @@ The application is 100% functional out of the box with high-fidelity preloaded s
 1. Click **"Connect API Key"** in the top navigation bar.
 2. Enter your OpenRouter API key (`sk-or-v1-...`).
 3. All benchmark requests will fetch live metrics directly from `https://openrouter.ai/api/v1/benchmarks`.
+
+---
+
+## 📄 License
+
+MIT License. See [LICENSE](./LICENSE) for details.
+

@@ -1,0 +1,11 @@
+node_modules
+web/node_modules
+mobile/node_modules
+.git
+.gitignore
+.vercel
+dist
+web/dist
+mobile/.expo
+.DS_Store
+*.log

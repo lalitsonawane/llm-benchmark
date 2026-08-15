@@ -1,0 +1,17 @@
+services:
+  llm-benchmark-web:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: openrouter-llm-benchmark
+    restart: unless-stopped
+    ports:
+      - "8080:80"
+    environment:
+      - NODE_ENV=production
+    healthcheck:
+      test: ["CMD", "wget", "--quiet", "--tries=1", "--spider", "http://localhost:80/"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 5s

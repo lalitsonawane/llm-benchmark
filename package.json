@@ -9,7 +9,10 @@
     "mobile": "npm --prefix mobile run start",
     "mobile:ios": "npm --prefix mobile run ios",
     "mobile:android": "npm --prefix mobile run android",
-    "mobile:web": "npm --prefix mobile run web"
+    "mobile:web": "npm --prefix mobile run web",
+    "docker:build": "docker build -t openrouter-llm-benchmark:latest .",
+    "docker:run": "docker run -d -p 8080:80 --name openrouter-llm-benchmark openrouter-llm-benchmark:latest",
+    "docker:compose": "docker compose up -d --build"
   },
   "keywords": [
     "openrouter",
