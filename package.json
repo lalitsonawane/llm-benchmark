@@ -1,0 +1,25 @@
+{
+  "name": "openrouter-llm-benchmark-suite",
+  "version": "1.0.0",
+  "description": "State-of-the-art LLM Benchmarks Portal and Expo Mobile App based on OpenRouter Benchmarks API",
+  "scripts": {
+    "dev": "npm --prefix web run dev",
+    "build": "npm --prefix web run build",
+    "preview": "npm --prefix web run preview",
+    "mobile": "npm --prefix mobile run start",
+    "mobile:ios": "npm --prefix mobile run ios",
+    "mobile:android": "npm --prefix mobile run android",
+    "mobile:web": "npm --prefix mobile run web"
+  },
+  "keywords": [
+    "openrouter",
+    "benchmarks",
+    "llm",
+    "leaderboard",
+    "expo",
+    "react",
+    "artificial-analysis"
+  ],
+  "author": "",
+  "license": "MIT"
+}
